@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap');
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+
+  overflow-x: hidden;
+
+
+}
+
+* {
+  box-sizing: border-box;
+
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+:root {
+  --cl-home-d1:  linear-gradient(248.66deg, #FF9696 0%, #8C6BAE 100%);
+  --cl-home-d2:  linear-gradient(248.66deg, #EEAECA 0%, #91BEF3 100%);
+  --cl-home-d3:  linear-gradient(248.66deg, #A8C8ED 0%, #7673DC 100%);
+  --cl-home-n3:  linear-gradient(248.66deg, #AAC0FF 0%, #8C6BAE 100%);
+  --cl-home-n2:  linear-gradient(248.66deg, #48355B 0%, #91BEF3 100%);
+  --cl-home-n3:  linear-gradient(248.66deg, #48355B 0%, #8C6EAB 100%);
+  --cl-bg-f: #FFFFFF2E; /* tepadagi F u-n */
+  --cl-bg-c: #FFFFFF29; /* tepadagi C u-n */  
+  --cl-white: #ffffff;
+  --cl-balck: #000000;
+  --cl-blueB: #18A0FB;
+  --cl-binafsha: #9a7cec;
+  --cl-light: #EBEBEB;
+
+  /* ============  FONT SIZE  =============== */
+  --size10: 10px;
+  --size12: 12px;
+  --size14: 14px;
+  --size16: 16px;
+  --size18: 18px;
+  --size22: 22px;
+  --size24: 24px;
+  --size28: 26px;
+  --size32: 32px;
+  --size164: 164px;
+  /* ================ LINE HEIGHT ============================= */
+  --lineh28: 28px;
+  --lineh30: 30px;
+  /* =============  ICONS width============== */
+  --icon-w18: 18px;
+  --icon-w14: 14px;
+  --icon-w12: 12px;
+  --icon-w25: 25.36px;
+  --icon-w35: 35px;
+  --icon-week: 67.57px;
+  /* ============= MARGIN vs PADDING PX  ================ */
+  --mp30: 30px;
+  --mp15: 15px;
+  --mp10: 10px;
+  --mp5: 5px;
+
+  /* ========== FONT FAMILY ============= */
+  --familyT: "Inter", sans-serif;
+  --familyL: "Inter", sans-serif;
+  --familyR: "Inter", sans-serif;
+  /* ============= DISPLAY ================== */
+}
+
+@media (min-width: 1440px) {
+  :root {
+    
+  --size10: 12px;
+  --size12: 14px;
+  --size14: 16px;
+  --size16: 18px;
+  --size18: 20px;
+  --size22: 24px;
+  --size24: 26px;
+  --size28: 28px;
+  --size32: 34px;
+  --size36: 36px;
+  --size164: 164px;
+  
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --sizeop: 14px;
+    --size10: 10px;
+    --size12: 12px;
+    --size14: 14px;
+    --size16: 14px;
+    --size18: 16px;
+    --size22: 18px;
+    --size24: 22px;
+    --size28: 24px;
+    --size30: 28px;
+    --size32: 32px;
+    --size36: 36px;
+    --size164: 160px;
+    /* ========== */
+    --icon-w18: 16px;
+    --icon-w14: 12px;
+    --icon-w12: 10px;
+  }
+}
+@media (max-width: 992px) {
+  :root {
+    --media: 1;
+    --sizeop: 12px;
+    --size10: 8px;
+    --size12: 10px;
+    --size14: 12px;
+    --size16: 12px;
+    --size18: 14px;
+    --size22: 16px;
+    --size24: 20px;
+    --size28: 22px;
+    --size30: 24px;
+    --size32: 18px;
+    --size36: 30px;
+    --size164: 144px;
+    /* ========== */
+    --icon-w18: 14px;
+    --icon-w14: 10px;
+    --icon-w12: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --media: 1;
+    --sizeop: 10px;
+    --size10: 6px;
+    --size12: 9px;
+    --size14: 10px;
+    --size16: 12px;
+    --size18: 14px;
+    --size22: 15px;
+    --size24: 16px;
+    --size28: 16px;
+    --size30: 22px;
+    --size32: 24px;
+    --size36: 28px;
+    --size164: 134px;
+    /* ========== */
+    --icon-w18: 14px;
+    --icon-w14: 10px;
+    --icon-w12: 8px;
+  }
+}
