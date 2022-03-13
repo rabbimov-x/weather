@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import createSagaMiddleware from 'redux-saga'
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
-import thunk from 'redux-thunk';
 import App from './App';
-import "./index.css"
+import { ourSaga } from './redux/saga/saga';
 import { rootReduser } from './redux/redusers/rootReaduser';
+import "./index.css"
+
+const sagaMiddleware = createSagaMiddleware()
   
-const store = createStore(rootReduser, compose( applyMiddleware(thunk)   ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() ))
+const store = createStore(rootReduser, compose( applyMiddleware(sagaMiddleware)   ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() ))
+
+sagaMiddleware.run(ourSaga)
 
 ReactDOM.render(
   

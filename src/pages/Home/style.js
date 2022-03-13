@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 
 
 export const HomeStyle = styled.div`
  width: 100%;
- background: var(--cl-home-d1);
+ background: ${({colorbg})=>colorbg ? `var(${colorbg})` : "var(--cl-home-d2)"};
  display: flex;
  flex-wrap: wrap ;
 
@@ -12,6 +13,11 @@ export const HomeStyle = styled.div`
      display: flex; 
  }
  .counterOut{
+     display: none;
+     padding-top: 30px;
+   
+ }
+ .themes{
      display: none;
  }
  .SearchLeft{
@@ -38,6 +44,10 @@ export const HomeStyle = styled.div`
       display: none;
       
   }
+  
+ .themes{
+     display: block;
+ }
 }
 `
 

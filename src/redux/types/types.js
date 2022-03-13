@@ -2,6 +2,7 @@
 
 export const updateState = "UpdateState"
 export const onSubmit = "OnSabmitChanj"
+export const updateData = "UpdateData"
 
 export const base = 'https://www.metaweather.com/api/location';
 export const cros = 'https://the-ultimate-api-challenge.herokuapp.com';

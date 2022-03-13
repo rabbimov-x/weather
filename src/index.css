@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap');
 body {
+  overflow-x: hidden;
   margin: 0;
+  padding: auto 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -12,6 +14,7 @@ body {
 
 * {
   box-sizing: border-box;
+  font-display: fallback;
 
 }
 code {
@@ -25,7 +28,7 @@ code {
   --cl-home-d3:  linear-gradient(248.66deg, #A8C8ED 0%, #7673DC 100%);
   --cl-home-n3:  linear-gradient(248.66deg, #AAC0FF 0%, #8C6BAE 100%);
   --cl-home-n2:  linear-gradient(248.66deg, #48355B 0%, #91BEF3 100%);
-  --cl-home-n3:  linear-gradient(248.66deg, #48355B 0%, #8C6EAB 100%);
+  --cl-home-n1:  linear-gradient(248.66deg, #48355B 0%, #8C6EAB 100%);
   --cl-bg-f: #FFFFFF2E; /* tepadagi F u-n */
   --cl-bg-c: #FFFFFF29; /* tepadagi C u-n */  
   --cl-white: #ffffff;
@@ -33,6 +36,7 @@ code {
   --cl-blueB: #18A0FB;
   --cl-binafsha: #9a7cec;
   --cl-light: #EBEBEB;
+  --cl-red: #ce0c26;
 
   /* ============  FONT SIZE  =============== */
   --size10: 10px;
@@ -43,7 +47,7 @@ code {
   --size22: 22px;
   --size24: 24px;
   --size28: 26px;
-  --size32: 32px;
+  --size32: 28px;
   --size164: 164px;
   /* ================ LINE HEIGHT ============================= */
   --lineh28: 28px;
@@ -52,6 +56,7 @@ code {
   --icon-w18: 18px;
   --icon-w14: 14px;
   --icon-w12: 12px;
+  --icon-w20: 20px;
   --icon-w25: 25.36px;
   --icon-w35: 35px;
   --icon-week: 67.57px;
@@ -120,7 +125,7 @@ code {
     --size24: 20px;
     --size28: 22px;
     --size30: 24px;
-    --size32: 18px;
+    --size32: 26px;
     --size36: 30px;
     --size164: 144px;
     /* ========== */

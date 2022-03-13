@@ -2,12 +2,17 @@ import { updateState } from "../types/types";
 
 
 
-const   initialState = {
+const   initiallState = {
     checkfc: false,
+    sen: "",
+    message: "",
+    loader: false,
+    modal: false,
+    colorbg: "--cl-home-d1",
 } 
 
-export const updateReduser =( state = initialState , action )=>{
-   if(action.type === updateState){       
+export const updateReduser =( state = initiallState , action )=>{
+   if( action.type === updateState){       
     return {...state,...action.data};
    }
    return state; 

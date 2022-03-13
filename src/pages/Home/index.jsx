@@ -2,28 +2,46 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Weekdays from "../../components/Weekdays";
 import { useSelector ,useDispatch } from "react-redux";
-import { Container , Img , P, Div , Icon, Line } from "../../GlobalStyle";
+import { Container , Img , P, Div , Icon, Line, Button } from "../../GlobalStyle";
 import { onSubmit, updateState } from "../../redux/types/types";
 import "slick-carousel/slick/slick.css";  
 import "slick-carousel/slick/slick-theme.css";
+import Logo from "../../components/Logo";
+import ModalColor from "../../components/ModalColor"
+import weekdaydata from "../../utils/weekdaydata";
+import homeData from "../../utils/homedata";
+
 import {FOrC, HomeStyle, Hour, Search} from  "./style"
 
 
-const Home = ()=>{
+const Home = (props)=>{
     const state = useSelector((state)=>state);
+    const data = weekdaydata(state.home.data.consolidated_weather[0],state.home.data.title)
+    const homedata = homeData(state.home.data);
     const dispatch = useDispatch()
-
-    const [location , setLocation] = useState(state.home.location);
-    useEffect(()=>{
-        console.log(location)
-    },[location])
+    // console.log(state.home.data);
+    const [location , setLocation] = useState("");
+    // const [localstorage ] = useState(localStorage.getItem("locatio"))
+    const onSubmitdate =(e)=>{
+        e.preventDefault();
+        dispatch({type: updateState , data: {message: ""}});
+        if(location.lengith !== 0 ){
+            dispatch({type: onSubmit , data: location});    
+        }
+        setLocation(state.home.location)
+      }
+    // useEffect(()=>{
+    //     if(localstorage.lengith !== 0){
+    //         dispatch({type: onSubmit , data: localstorage});
+    //     }     
+    // },[state.home.meta])
     const settings = {
         // dots: true,
         // infinite: true,
         slidesToShow: 3,
         // slidesToScroll: 1,
         // autoplay: true,
-        speed: 600,
+        speed: 300,
         autoplaySpeed: 2500,
         cssEase: "linear",
         responsive: [
@@ -82,8 +100,10 @@ const Home = ()=>{
     
         ]
       };
+      
     return(
-        <HomeStyle>
+        <HomeStyle colorbg = {state.update.colorbg}>
+            <ModalColor/>
             <HomeStyle.Left>
             <Search className="SearchLeft">
                         <form>
@@ -95,10 +115,9 @@ const Home = ()=>{
                             </div>
                         </form>
                     </Search>
-                <Container justify = "space-between">
+                <Container justify = "space-between" >
                     <Img w= "30%">
-                        <img src="https://www.metaweather.com/static/img/weather/c.svg" alt="error" />
-                        {/* //./assets/images/png/WeatherIcon.png" */}
+                    <Logo/>
                     </Img>
 
                     <Div h = "100%" w = "70%" display = "flex" justify = "space-between" flex = "column" align = "end">
@@ -114,16 +133,20 @@ const Home = ()=>{
                             </P>
                         </FOrC.Button>
                     </FOrC>
+                    <Button className="themes" mr = "34px 5px 0 0" pd = "12px 14px" type="button" size = "var(--size18)" onClick={()=> dispatch({type: updateState, data: {modal: true}})} >
+                       Themes
+                    </Button>
                     
                     </Div>
                 </Container>
                 <Container justify = "space-between" className="counterOut">
-                        <Div display = "flex" w = "fit-content">
-                            <Icon.Map mr = " 0 5px 0 0" w = "35px"/>
-                            <P size = "var(--size32)">
-                                Delhi, India
-                            </P>
-                        </Div>
+                    <Div display="flex" w = "fix-countent" align = "center">
+                    <Icon.Map mr = " 0 5px 0 0" w = "35px"/>    
+                    <P size = "var(--size32)">
+                        {homedata.location}, {homedata.country}
+                    </P>
+                    </Div>
+                    
 
                         
 
@@ -132,7 +155,7 @@ const Home = ()=>{
                 <Container flex>
                     <Div w = "fit-content" >
                         <P fSh mr = "25px 0" size = 'var(--size164)' fontF = "var(--familyT)" bold = "100">
-                            24 
+                            {data.temperature} 
                         </P>
                         <Div position = "absolute" top= "48px" right= "-45px" w = "fit-content" >
                             <P fSh size = "var(--size32)" family = "var(Inter)">
@@ -142,61 +165,77 @@ const Home = ()=>{
                     </Div>
                     <Div>
                         <P size = "var(--size32)" >
-                           17th Jun ‘21
+                           {data.data}
                         </P>
                     </Div>
                     <Div mr = "15px  0  0 0">
                         <P size = "var(--size32)" >
-                           Thrusday   |   2:45 am
+                           {homedata.data}   |   {homedata.time}pm
                         </P>
                     </Div>
-                    <Div mr = "45px 0 0 0">
-                        <P size = "var(--size22)"  tSH>
-                            Wind 10km/h | * Hum 54% | @ rain 0.2%
+                    <Div mr = "45px 0 0 0" display = "flex">
+                        <Icon.Wind w = "var(--icon-w25)" />
+                        <P size = "var(--size22)" mr = "0  0 0 10px"  tSH>
+                            Wind  {homedata.wind}km/h
                         </P>
+                        <P size = "var(--size22)"  mr = "0 15px">
+                            |
+                        </P>
+                        <Icon.Hum w = "var(--icon-w20)"/>
+                        <P size = "var(--size22)"  mr = "0  0 0 10px">
+                            Hum {homedata.humidity}%
+                        </P>
+                        <P  size = "var(--size22)" mr = "0 15px">
+                            |
+                        </P>
+                         <P size = "var(--size22)"  mr = "0  0 0 10px">
+                           Pressure  {homedata.pressure}mb
+                         </P>
                     </Div>
                 </Container>
                 <Container justify = "center" pd = "80px  ">
-                <Slider className="Slider" {...settings}>
-                    <div>  
-                        <Weekdays/>
-                    </div>
-                    <div>  
-                        <Weekdays/>
-                    </div>
-                    <div>  
-                        <Weekdays/>
-                    </div>
-                    <div>  
-                        <Weekdays/>
-                    </div>
-                    <div>  
-                        <Weekdays/>
-                    </div>
-                    <div>  
-                        <Weekdays/>
-                    </div>
-                    <div>  
-                        <Weekdays/>
-                    </div>
-                </Slider>    
+                
+                     <Slider className="Slider" {...settings}>
+                        
+                        {
+                            state.home.data.consolidated_weather.map((value)=>{
+                                return(
+                                    <div key = {value.id} >
+                                        <Weekdays data = {value} />
+                                    </div>
+
+                                )
+                            })
+                        }
+                        {/* <div>
+                        <Weekdays data = {state.home.data.consolidated_weather[0]} />
+                        </div> */}
+                        
+                        
+                     </Slider>   
+                <div></div>   
                 </Container>
             </HomeStyle.Left>
             <HomeStyle.Right>
-                <Container className="counterIn" inLeft >
-                    <Icon.Map mr = " 0 5px 0 0" w = "35px"/>
+                <Container className="counterIn" inLeft  justify = "space-between" >
+                    <Div display="flex" w = "fix-countent" align = "center">
+                    <Icon.Map mr = " 0 5px 0 0" w = "35px"/>    
                     <P size = "var(--size32)">
-                        Delhi, India
+                        {homedata.location}, {homedata.country}
                     </P>
+                    </Div>
+                    <Button type="button" size = "var(--size16)" onClick={()=> dispatch({type: updateState, data: {modal: true}})} >
+                       Themes
+                    </Button>
 
                     
                 </Container>
                 <Container justify = "center">
                 <Search className="SearchRight">
-                        <form >
+                        <form onSubmit={e =>onSubmitdate(e)} >
                             <div className="SearchInputs">
                                 <input onChange={(e) => setLocation(e.target.value)} value = {location} type="text" placeholder="Search ..." required className="searchAllConters" />
-                                <button type="button" onClick={() =>dispatch({ type: onSubmit, data: location })}  className="searchButton"  >
+                                <button type="sumbit"   className="searchButton"  >
                                     <Icon.Search w = "18px" />
                                 </button>
                                 
@@ -213,10 +252,10 @@ const Home = ()=>{
                             <Div pd = " 27px 18px 36px 18px" textC = "center">
                                 <Icon.Hour w= "100%"  />
                                 <P size = "var(--size28)" bold = "400" mr = "42px 0 8px 0">
-                                    11:24
+                                    {homedata.sunrise}
                                 </P>
                                 <P size = "var(--size22)" color = "var(--cl-light)">
-                                    11:45    
+                                {homedata.sunrise}   
                                 </P>            
                             </Div>
                         </Hour>
@@ -224,22 +263,18 @@ const Home = ()=>{
                     </Div>
                     <Div w= "fit-content"  textC = "center">
                         <P size = "var(--size28)">
-                            Golden Hours
+                            Your Hours
                         </P>
                         <Hour maxw = "130px">
                             <Div pd = "27px 18px 36px 18px" textC = "center">
                                 <Icon.Hour w= "100%"  />
                                 <P w = "fit-content"  display = "flex"  size = "var(--size28)" bold = "400" mr = "48px auto 8px auto">
-                                    06:01 
-                                    {/* <P mr = "auto  0 2px 3px" size = "var(--size14)">
-                                        AM
-                                    </P> */}
+                                {homedata.time}
+                                    
                                 </P>
                                 <P  w = "fit-content" mr = "0 auto" display = "flex"  size = "var(--size24)" color = "var(--cl-light)">
-                                    11:45 
-                                    {/* <P mr = "auto  0 2px 3px" size = "var(--size14)">
-                                        PM
-                                    </P>    */}
+                                {homedata.time} 
+                                    
                                 </P>            
                             </Div>
                         </Hour>
@@ -253,10 +288,10 @@ const Home = ()=>{
                             <Div pd = " 27px 18px 36px 18px" textC = "center">
                                 <Icon.Hour w= "100%"  />
                                 <P size = "var(--size28)" bold = "400" mr = "42px 0 8px 0">
-                                    11:24
+                                {homedata.sunset}
                                 </P>
                                 <P size = "var(--size22)" color = "var(--cl-light)">
-                                    11:45    
+                                {homedata.sunset}
                                 </P>            
                             </Div>
                         </Hour>
@@ -264,9 +299,9 @@ const Home = ()=>{
                     </Div>
                 </Container>
                 <Line w = "80%" mr = "40px auto"/>
-                <Container justify = "center" >
+                <Container justify = "center" pd ="40px 5% 0">
                     <Img w= "90%">
-                        <img src="./assets/images/png/WeatherIcon.png" alt="error" /> 
+                        <img src="./assets/images/svg/moderite.svg" alt="error" /> 
                     </Img>    
                 </Container>    
             </HomeStyle.Right>
