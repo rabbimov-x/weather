@@ -5,7 +5,7 @@ import { updateState } from "../types/types";
 const   initiallState = {
     checkfc: false,
     sen: "",
-    message: "",
+    message: "Search ...",
     loader: false,
     modal: false,
     colorbg: "--cl-home-d1",

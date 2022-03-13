@@ -9,7 +9,7 @@ export function* fetchUser(action){
         if(user.data.length !== 0 || !user.data){
         const userLocation = yield call(requestGetLocation, user.data[0].woeid)
         yield put({type: updateData, data: userLocation.data});
-        yield put ({type: updateState , data: {message: ""}})
+        yield put ({type: updateState , data: {message: "Search ..."}})
         localStorage.setItem("location" , `${action.data}`)
         yield put ({type: updateState , data: {loader: false}})
         } else{
@@ -17,7 +17,7 @@ export function* fetchUser(action){
         yield put ({type: updateState , data: {loader: false}})
         }
      } catch (e) {
-        console.log(e)
+      //   console.log(e)
      }
 }
 

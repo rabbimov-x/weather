@@ -106,14 +106,16 @@ const Home = (props)=>{
             <ModalColor/>
             <HomeStyle.Left>
             <Search className="SearchLeft">
-                        <form>
+                        <form onSubmit={e =>onSubmitdate(e)} >
                             <div className="SearchInputs">
-                                <input type="text" placeholder="Search ..." className="searchAllConters" />
-                                <button type="sumbit" className="searchButton">
+                                <input onChange={(e) => setLocation(e.target.value)} value = {location} type="text" placeholder={state.update.message} required className="searchAllConters" />
+                                <button type="sumbit"   className="searchButton"  >
                                     <Icon.Search w = "18px" />
                                 </button>
+                                
                             </div>
                         </form>
+                        
                     </Search>
                 <Container justify = "space-between" >
                     <Img w= "30%">
@@ -234,7 +236,7 @@ const Home = (props)=>{
                 <Search className="SearchRight">
                         <form onSubmit={e =>onSubmitdate(e)} >
                             <div className="SearchInputs">
-                                <input onChange={(e) => setLocation(e.target.value)} value = {location} type="text" placeholder="Search ..." required className="searchAllConters" />
+                                <input onChange={(e) => setLocation(e.target.value)} value = {location} type="text" placeholder={state.update.message} required className="searchAllConters" />
                                 <button type="sumbit"   className="searchButton"  >
                                     <Icon.Search w = "18px" />
                                 </button>
