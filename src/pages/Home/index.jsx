@@ -104,7 +104,7 @@ const Home = ()=>{
             <ModalColor/>
             <HomeStyle.Left>
             <Search className="SearchLeft">
-                        <form onSubmit={e =>onSubmitdate(e)} >
+                        <form onSubmit={e =>onSubmitdate(e)}>
                             <div className="SearchInputs">
                                 <input onChange={(e) => setLocation(e.target.value)} value = {location} type="text" placeholder={state.update.message} required className="searchAllConters" />
                                 <button type="sumbit"   className="searchButton"  >

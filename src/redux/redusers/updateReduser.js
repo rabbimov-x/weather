@@ -1,7 +1,6 @@
 import { updateState } from "../types/types";
 
 
-
 const   initiallState = {
     checkfc: false,
     sen: "",
