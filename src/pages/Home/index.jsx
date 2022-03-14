@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import Weekdays from "../../components/Weekdays";
 import { useSelector ,useDispatch } from "react-redux";
@@ -14,14 +14,12 @@ import homeData from "../../utils/homedata";
 import {FOrC, HomeStyle, Hour, Search} from  "./style"
 
 
-const Home = (props)=>{
+const Home = ()=>{
     const state = useSelector((state)=>state);
     const data = weekdaydata(state.home.data.consolidated_weather[0],state.home.data.title)
     const homedata = homeData(state.home.data);
     const dispatch = useDispatch()
-    // console.log(state.home.data);
     const [location , setLocation] = useState("");
-    // const [localstorage ] = useState(localStorage.getItem("locatio"))
     const onSubmitdate =(e)=>{
         e.preventDefault();
         dispatch({type: updateState , data: {message: ""}});

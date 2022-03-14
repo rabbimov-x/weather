@@ -8,18 +8,21 @@ import { onSubmit } from "./redux/types/types";
 function App() {
   const state = useSelector((state)=>state.update)
   const dispatch = useDispatch() 
-  const localstorage = localStorage.getItem("locatio");
-
-  // useEffect(()=>{
-  
-  //   if(!localstorage || localstorage.length === 0 ){
-  //     console.log("! local")
-  //     dispatch({type: onSubmit , data: "berlin"}); 
-  //   } else {
-  //     console.log("now local")
-  //     dispatch({type: onSubmit , data: localstorage});
-  //   }
-  // },[state.location])
+  const localstorage = localStorage.getItem("location");
+  const request = ()=>{
+    if(!localstorage || localstorage.length === 0 ){
+      
+      dispatch({type: onSubmit , data: "berlin"}); 
+    } else {
+      
+      dispatch({type: onSubmit , data: localstorage});
+    }
+  }
+  useEffect(()=>{
+    
+    request();
+    
+  },[state.location])
 
 
   return (
