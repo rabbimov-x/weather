@@ -9,6 +9,7 @@ const ModalColor = ()=>{
     const colorupdate = ({color})=>{
         dispatch({type: updateState, data: {colorbg: color }})
         dispatch({type: updateState, data: {modal: false}})
+        localStorage.setItem("colorbg",`${color}`)
     }
     return (
     <Modal state = {state} >

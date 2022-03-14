@@ -1,14 +1,17 @@
-import { useCallback, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { BrowserRouter as Router , Routes , Route} from "react-router-dom"
 import { useSelector , useDispatch} from "react-redux";
 import Loader from "./components/Loader";
 import Home from "./pages/Home";
-import { onSubmit } from "./redux/types/types";
+import { onSubmit, updateState } from "./redux/types/types";
 function App() {
   const state = useSelector((state)=>state.update)
   const dispatch = useDispatch() 
   const localstorage = localStorage.getItem("location");
-  const request =  ()=>{
+  const localColor = localStorage.getItem("colorbg");
+  const tempref = useRef()
+  const tempref2 = useRef()
+  const request = ()=>{
     if(!localstorage || localstorage.length === 0 ){
       
       dispatch({type: onSubmit , data: "berlin"}); 
@@ -16,10 +19,40 @@ function App() {
       
       dispatch({type: onSubmit , data: localstorage});
     }
-  }
-  useEffect(()=>{
     
-    request();
+  }
+  const colorput = ()=>{
+    
+    if(!localColor || localColor.length === 0){
+         
+    } else {
+      
+      switch(`${localColor}`){
+        case `--cl-home-d1` : dispatch({type: updateState, data: {colorbg: localColor}});
+        break;        
+        case `--cl-home-d2` : dispatch({type: updateState, data: {colorbg: localColor}});
+        break;      
+        case `--cl-home-d3` : dispatch({type: updateState, data: {colorbg: localColor}});
+        break;      
+        case `--cl-home-n3` : dispatch({type: updateState, data: {colorbg: localColor}});
+        break;      
+        case `--cl-home-n2` : dispatch({type: updateState, data: {colorbg: localColor}});
+        break;      
+        case `--cl-home-n1` : dispatch({type: updateState, data: {colorbg: localColor}});
+        break;   
+        default: return "";      
+      }
+    }
+  }
+
+  tempref.current = request;
+  tempref2.current = colorput;
+
+  useEffect(()=>{
+    tempref.current()
+  },[])
+  useEffect(()=>{
+    tempref2.current()
   },[])
 
 
