@@ -149,6 +149,10 @@ export const Search = styled.div`
                 font-family: var(--familyL);
                 background-color: transparent;
                 letter-spacing: calc(-.006px + var(--text-tracking-pos, 0)*14px);
+                
+                &::placeholder{
+                    color: #FAFAFF;
+                }
             }
             .searchButton{
                 display: flex;
