@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createSagaMiddleware from 'redux-saga'
 import { Provider } from 'react-redux';
-import { applyMiddleware, compose, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import App from './App';
 import { ourSaga } from './redux/saga/saga';
 import { rootReduser } from './redux/redusers/rootReaduser';
