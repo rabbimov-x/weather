@@ -15,7 +15,7 @@ const ModalColor = ()=>{
     <Modal state = {state} >
         <Modal.Countent className = "countent">
             <Container  justify = "right"  >
-                    <Button bg = "var(--cl-red)" type = "button" onClick={()=>dispatch({type: updateState, data: {modal: false}})}>
+                    <Button bg = "transparent" type = "button" onClick={()=>dispatch({type: updateState, data: {modal: false}})}>
                         <Img w= "18px" >
                             <img src="./assets/images/svg/x.svg" alt="error" />
                         </Img>

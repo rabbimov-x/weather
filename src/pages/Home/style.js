@@ -7,6 +7,7 @@ export const HomeStyle = styled.div`
  background: ${({colorbg})=>colorbg ? `var(${colorbg})` : "var(--cl-home-d2)"};
  display: flex;
  flex-wrap: wrap ;
+ position: relative;
 
  .counterIn{
      display: flex; 

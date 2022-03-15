@@ -101,7 +101,7 @@ const Home = ()=>{
       
     return(
         <HomeStyle colorbg = {state.update.colorbg}>
-            <ModalColor/>
+           
             <HomeStyle.Left>
             <Search className="SearchLeft">
                         <form onSubmit={e =>onSubmitdate(e)}>
@@ -305,6 +305,7 @@ const Home = ()=>{
                     </Img>    
                 </Container>    
             </HomeStyle.Right>
+            <ModalColor/>
         </HomeStyle>
     )
 }
