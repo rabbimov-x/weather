@@ -48,6 +48,11 @@ export const HomeStyle = styled.div`
  .themes{
      display: block;
  }
+ @media (max-width: 576px) {
+    .SearchLeft{
+        width: 90%; 
+    }
+ }
 }
 `
 
@@ -159,6 +164,7 @@ export const Search = styled.div`
             }
         }
     }
+    
 `
 export const Hour = styled.div`
 max-width: ${({maxw})=> maxw ? maxw :  "105px"};
