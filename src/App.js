@@ -50,8 +50,7 @@ function App() {
 
   useEffect(()=>{
     tempref.current()
-  },[])
-  useEffect(()=>{
+    
     tempref2.current()
   },[])
 
