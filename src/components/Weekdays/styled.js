@@ -15,7 +15,9 @@ border-radius: 11.3852px;
     color: black;
     cursor: pointer;
     text-decoration: none;
-    
+    @media (min-width: 1700px ) {
+        padding: 36px 46px;  
+    }
 }
 
 @media (max-width: 576px) {

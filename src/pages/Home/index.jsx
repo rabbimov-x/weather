@@ -11,7 +11,7 @@ import ModalColor from "../../components/ModalColor"
 import weekdaydata from "../../utils/weekdaydata";
 import homeData from "../../utils/homedata";
 
-import {FOrC, HomeStyle, Hour, Search} from  "./style"
+import { HomeStyle, Hour, Search} from  "./style"
 
 
 const Home = ()=>{
@@ -36,7 +36,7 @@ const Home = ()=>{
     const settings = {
         // dots: true,
         // infinite: true,
-        slidesToShow: 3,
+        slidesToShow: 5,
         // slidesToScroll: 1,
         // autoplay: true,
         speed: 300,
@@ -121,7 +121,7 @@ const Home = ()=>{
                     </Img>
 
                     <Div h = "100%" w = "70%" display = "flex" justify = "space-between" flex = "column" align = "end">
-                    <FOrC>
+                    {/* <FOrC>
                         <FOrC.Button  bg = {!state.update.checkfc} onClick = {()=>dispatch({type: updateState , data: {checkfc: false}})} >
                             <P no >
                                 F
@@ -132,15 +132,15 @@ const Home = ()=>{
                                 C
                             </P>
                         </FOrC.Button>
-                    </FOrC>
+                    </FOrC> */}
                     <Button className="themes" mr = "34px 5px 0 0" pd = "12px 14px" type="button" size = "var(--size18)" onClick={()=> dispatch({type: updateState, data: {modal: true}})} >
                        Themes
                     </Button>
                     
                     </Div>
                 </Container>
-                <Container justify = "space-between" className="counterOut">
-                    <Div display="flex" w = "fix-countent" align = "center">
+                <Container justify = "space-between" className="counterOut" >
+                    <Div display="flex" w = "fix-countent" align = "center"  >
                     <Icon.Map mr = " 0 5px 0 0" w = "35px"/>    
                     <P size = "var(--size32)">
                         {homedata.location}, {homedata.country}
@@ -163,14 +163,14 @@ const Home = ()=>{
                             </P>
                         </Div>
                     </Div>
-                    <Div>
+                    <Div  mr = "50px 0 0 0">
                         <P size = "var(--size32)" >
                            {data.data}
                         </P>
                     </Div>
                     <Div mr = "15px  0  0 0">
                         <P size = "var(--size32)" >
-                           {homedata.data}   |   {homedata.time}pm
+                           {homedata.data}   |   {homedata.time}
                         </P>
                     </Div>
                     <Div mr = "45px 0 0 0" display = "flex">
@@ -269,11 +269,11 @@ const Home = ()=>{
                             <Div pd = "27px 18px 36px 18px" textC = "center">
                                 <Icon.Hour w= "100%"  />
                                 <P w = "fit-content"  display = "flex"  size = "var(--size28)" bold = "400" mr = "48px auto 8px auto">
-                                {homedata.time}
+                                {homedata.timeLeft}
                                     
                                 </P>
                                 <P  w = "fit-content" mr = "0 auto" display = "flex"  size = "var(--size24)" color = "var(--cl-light)">
-                                {homedata.time} 
+                                  {homedata.timeLeft} 
                                     
                                 </P>            
                             </Div>
