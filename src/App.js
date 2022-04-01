@@ -59,7 +59,7 @@ function App() {
     <Router>
       <Routes>
         <Route  path = "/"  element = {
-         state.loader ? <Loader/>  : <Home/>  
+         state.loader ? <Home/>  : <Loader/>  
         } /> 
       </Routes>  
     </Router>
