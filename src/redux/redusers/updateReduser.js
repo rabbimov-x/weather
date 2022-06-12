@@ -13,6 +13,7 @@ const   initiallState = {
 export const updateReduser =( state = initiallState , action )=>{
    if( action.type === updateState){       
     return {...state,...action.data};
-   }
-   return state; 
+   } else{
+       return state;
+   } 
 }

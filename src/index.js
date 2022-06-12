@@ -6,13 +6,13 @@ import { applyMiddleware, createStore } from 'redux';
 import App from './App';
 import { ourSaga } from './redux/saga/saga';
 import { rootReduser } from './redux/redusers/rootReaduser';
-import "./index.css"
+import "./index.css";
 
 const sagaMiddleware = createSagaMiddleware()
   
 const store = createStore(rootReduser,  applyMiddleware(sagaMiddleware))
 
-sagaMiddleware.run(ourSaga)
+sagaMiddleware.run(ourSaga);
 
 ReactDOM.render(
   

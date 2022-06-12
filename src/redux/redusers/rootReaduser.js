@@ -7,7 +7,6 @@ import { updateReduser } from "./updateReduser"
 
 
 export const rootReduser = combineReducers({
-     
     home: homeReduser,
     update: updateReduser,
  

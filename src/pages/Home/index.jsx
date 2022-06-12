@@ -4,14 +4,15 @@ import Weekdays from "../../components/Weekdays";
 import { useSelector ,useDispatch } from "react-redux";
 import { Container , Img , P, Div , Icon, Line, Button } from "../../GlobalStyle";
 import { onSubmit, updateState } from "../../redux/types/types";
-import "slick-carousel/slick/slick.css";  
-import "slick-carousel/slick/slick-theme.css";
 import Logo from "../../components/Logo";
 import ModalColor from "../../components/ModalColor"
 import weekdaydata from "../../utils/weekdaydata";
 import homeData from "../../utils/homedata";
-
+import "slick-carousel/slick/slick.css";  
+import "slick-carousel/slick/slick-theme.css";
+import "react-toastify/dist/ReactToastify.css"
 import { HomeStyle, Hour, Search} from  "./style"
+import { ToastContainer, Zoom } from "react-toastify";
 
 
 const Home = ()=>{
@@ -23,16 +24,12 @@ const Home = ()=>{
     const onSubmitdate =(e)=>{
         e.preventDefault();
         dispatch({type: updateState , data: {message: ""}});
-        if(location.lengith !== 0 ){
+        if(location.length !== 0 ){
             dispatch({type: onSubmit , data: location});    
         }
         setLocation(state.home.location)
       }
-    // useEffect(()=>{
-    //     if(localstorage.lengith !== 0){
-    //         dispatch({type: onSubmit , data: localstorage});
-    //     }     
-    // },[state.home.meta])
+
     const settings = {
         // dots: true,
         // infinite: true,
@@ -101,10 +98,10 @@ const Home = ()=>{
       
     return(
         <HomeStyle colorbg = {state.update.colorbg}>
-           
+           <ToastContainer draggable = {false} transition = {Zoom} autoClose = {1500} />
             <HomeStyle.Left>
             <Search className="SearchLeft">
-                        <form onSubmit={e =>onSubmitdate(e)}>
+                        <form onSubmit={e=>onSubmitdate(e)}>
                             <div className="SearchInputs">
                                 <input onChange={(e) => setLocation(e.target.value)} value = {location} type="text" placeholder={state.update.message} required className="searchAllConters" />
                                 <button type="sumbit"   className="searchButton"  >
@@ -121,18 +118,6 @@ const Home = ()=>{
                     </Img>
 
                     <Div h = "100%" w = "70%" display = "flex" justify = "space-between" flex = "column" align = "end">
-                    {/* <FOrC>
-                        <FOrC.Button  bg = {!state.update.checkfc} onClick = {()=>dispatch({type: updateState , data: {checkfc: false}})} >
-                            <P no >
-                                F
-                            </P>
-                        </FOrC.Button>
-                        <FOrC.Button bg = {state.update.checkfc} c onClick = {()=>dispatch({type: updateState , data: {checkfc: true}})} >
-                            <P no >
-                                C
-                            </P>
-                        </FOrC.Button>
-                    </FOrC> */}
                     <Button className="themes" mr = "34px 5px 0 0" pd = "12px 14px" type="button" size = "var(--size18)" onClick={()=> dispatch({type: updateState, data: {modal: true}})} >
                        Themes
                     </Button>
